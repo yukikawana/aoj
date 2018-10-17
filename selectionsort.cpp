@@ -1,27 +1,25 @@
 #include <stdio.h>
-#include "aoj_utils/utils.h"
 #include <memory>
+#include "aoj_utils/utils.h"
 using namespace std;
 
+
 int main() {
-    int N, i, j, min_idx;
+    int N, i, k, minj;
     input(N);
     int A[N];
     for (i = 0; i < N; i++) input(A[i]);
     print_array(N, A);
 
     for (i = 0; i < N; i++) {
-        min_idx = i;
-        for (j = i + 1; j < N; j++) {
-            if (A[min_idx] > A[j]) {
-                min_idx = j;
-                }
+        minj = i;
+        for (k = i + 1; k < N; k++) {
+            if (A[k] < A[minj]) minj = k;
             }
-        swap(A[i], A[min_idx]);
+        swap(A[minj], A[i]);
         }
 
     print_array(N, A);
-
     
     return 0;
     }
